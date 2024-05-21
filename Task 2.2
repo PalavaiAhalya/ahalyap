@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Job Data</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter Job Data</h2>
+    <form id="jobForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            <option value="IT Manager">IT Manager</option>
+            <option value="HR Manager">HR Manager</option>
+            <option value="Manager">Manager</option>
+            <option value="Developer">Developer</option>
+            <option value="HR Assistant">HR Assistant</option>
+            <option value="Sales Manager">Sales Manager</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="hr">Human Resources</option>
+            <option value="it">Information Technology</option>
+            <option value="marketing">Marketing</option>
+        </select>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+            <option value="canada">Canada</option>
+            <option value="india">India</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="openingDate">Opening Date:</label>
+        <input type="date" id="openingDate" name="openingDate" value="<?php echo date('Y-m-d'); ?>" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('jobForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get values of required fields
+            var title = document.getElementById('title').value;
+            var type = document.getElementById('type').value;
+            var department = document.getElementById('department').value;
+            var country = document.getElementById('country').value;
+            var description = document.getElementById('description').value;
+            var openingDate = document.getElementById('openingDate').value;
+
+            // Check if any required field is blank
+            if (title === '' || type === '' || department === '' || country === '' || description === '' || openingDate === '') {
+                alert('Please fill in all required fields.');
+                return; // Exit function if any required field is blank
+            }
+
+            // If all required fields are filled, submit the form
+            this.submit();
+        });
+    </script>
+</body>
+</html>
